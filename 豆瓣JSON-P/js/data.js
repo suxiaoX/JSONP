@@ -1,0 +1,55 @@
+/*能获取到一个对象，包含了以下信息
+object{
+	books:[
+		0：{
+			title：（书本名0），
+			publisher：（出版社0），
+			price：（价格0），
+			pubdate：（出版日期0），
+			image：正常图片地址（"https://img1.doubanio.com/mpic/s1107338.jpg"），
+			images：{
+				large：大图片地址，
+				medium：正常大小图片，
+				small：小图片地址
+			}
+			author：[
+				0:作家
+			]，
+			binding：装订方式（精装||平装），
+			summary：书本及作者简介，
+			rating：{
+				average：评分，
+				max：10，（最多10分）
+				min：0，（最小0分）
+				numRaters：评价人数
+			}
+		}，
+		1：{
+			title：（书本名1），
+			publisher：（出版社1），
+			price：（价格1），
+			pudate：（出版日期1），
+			image：正常图片地址（"https://img1.doubanio.com/mpic/s1107338.jpg"），
+			images：{
+				large：大图片地址，
+				medium：正常大小图片，
+				small：小图片地址
+			}
+			author：[
+				0:作家
+			]，
+			binding：装订方式（精装||平装），
+			summary：书本及作者简介，
+			rating：{
+				average：评分，
+				max：10，（最多10分）
+				min：0，（最小0分）
+				numRaters：评价人数
+			}
+		}
+	],
+	count:20,
+	start:0,
+	total:（搜索出来的书本总量）
+}
+*/

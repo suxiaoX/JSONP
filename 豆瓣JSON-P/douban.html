@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>JSONP--豆瓣</title>
+</head>
+<link  rel="stylesheet" href="./css/index.css" />
+<link rel="Shortcut Icon" href="./img/favicon.ico"  type="image/x-icon" />
+<body>
+	<header class="head">
+		<s class="title-bg"></s>
+		<h2>你想要的这里都有--豆瓣</h2>
+	</header>
+	<section class="douban-book">
+		<div class="book-search">
+			<fieldset class="search-box">
+				<legend style="display: none;">搜索</legend>
+				<div class="search-text">
+				<input type="text" placeholder="请输入关键字搜索" id="text"/>
+				</div>
+				<div class="search-btn">
+					<input type="button" value="搜索" id="btn-search" />
+				</div>
+			</fieldset>
+		</div>
+		<div id="title"></div>
+		<hr />
+		<div id="loading" >
+			<span>加载中...</span>
+		</div>
+		<div class="content">
+			<ul id="book-list" class="clearfix">
+				
+			</ul>
+			<div id="page"></div>
+		</div>
+		<div class="ps">
+			<span class="close">×</span>
+			<p>用跨越知识点，通过跨域请求的方式获取到豆瓣数据里的对象，分拆数据与结构，提取自己使用的数据，用于页面，主要知识点是JSONP的内容，通过书写这个项目，熟练掌握了JSONP的用法!</p>
+		</div>
+	</section>
+	<script src="./js/data.js"></script>
+	<script src="./js/page.js"></script>
+	<script src="./js/tool.js"></script>
+	
+	<script>
+		
+		var ps = document.querySelector(".ps")
+		var close = document.querySelector(".close");
+		ps.style.left = "0px";
+		/*个人说明*/
+		close.onclick = function(){
+			this.parentNode.style.left = "-165px";
+			return;
+		}
+		ps.onmouseover = function(){
+			this.style.left = "0px"
+		}
+		
+		var Inps = document.getElementById("text");
+		var btnSearch = document.querySelector("#btn-search");
+		var searchText = document.querySelector(".search-text")
+		var searchValue = "JSON";
+		btnSearch.addEventListener("click",function(){
+			loadingNone();
+			nowPage = 1;
+			ps.style.left = "-165px";
+			searchValue = Inps.value;
+			search();
+		})
+		Inps.onfocus = function(){
+			Inps.select();
+		}
+		searchText.onkeydown = function(e){
+			if(e.keyCode == 13){
+				loadingNone();
+				nowPage = 1;
+				ps.style.left = "-165px";
+				Inps.select();
+				searchValue = Inps.value;
+				search();
+				
+				
+				
+			}
+		}
+		
+		/*和豆瓣的接口函数*/
+		function search() {//引入豆瓣的JSONP
+			start = (nowPage - 1) * count;
+            var oScript = document.createElement('script');
+            oScript.src = 'https://api.douban.com/v2/book/search?q='+ searchValue +'&callback=showPage&start='+start+'&count=' + count;
+            document.body.appendChild(oScript);
+      }
+		search();
+	</script>
+	
+</body>
+</html>

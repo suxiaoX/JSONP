@@ -23,5 +23,8 @@ function pages(pages, page, prepage) {//pages待会需要用totalPage来穿参
         start = end - prepage + 1;
         start = start > 0 ? start : 1;
     }
+    
+    
+    
     return [start, end];//返回的start赋值给startPage，end赋值给endPage
 }
